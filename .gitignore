@@ -1,0 +1,16 @@
+# Données brutes : téléchargées par scripts/download.py, jamais commitées
+data/raw/
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+.pytest_cache/
+
+# Éditeurs
+.vscode/
+.idea/
+.DS_Store
+
+# Notebooks : on garde les notebooks d'exploration, pas leurs checkpoints
+.ipynb_checkpoints/
