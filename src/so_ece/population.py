@@ -17,6 +17,8 @@ from .paths import DATA_DIR
 AUTRES = "Autres développeurs"
 EXP_BANDS = ["0-5 ans", "6-10 ans", "Plus de 10 ans"]
 REGIONS = ["Europe", "Monde"]
+COMPARE = "2025 → 2026"
+PERIODS = ["2026", "2025", COMPARE]
 
 
 @lru_cache(maxsize=1)
@@ -51,6 +53,21 @@ class Filters:
     region: str = "Europe"
     groups: tuple[str, ...] = field(default_factory=tuple)  # vide = tous les profils data/IA
     exp_bands: tuple[str, ...] = field(default_factory=tuple)  # vide = toutes les expériences
+    period: str = COMPARE  # "2026", "2025" ou "2025 → 2026"
+    others: bool = True  # afficher aussi les autres développeurs (groupe de comparaison)
+
+    @property
+    def compare(self) -> bool:
+        return self.period == COMPARE
+
+    @property
+    def level_year(self) -> int:
+        """Année des niveaux affichés : 2026 en mode comparaison, sinon l'année choisie."""
+        return 2026 if self.compare else int(self.period)
+
+    @property
+    def years(self) -> tuple[int, ...]:
+        return (2025, 2026) if self.compare else (int(self.period),)
 
     def describe(self) -> str:
         who = ", ".join(self.groups) if self.groups else "profils data/IA"
@@ -73,6 +90,9 @@ def select_data_profiles(df: pd.DataFrame, f: Filters) -> pd.DataFrame:
 
 
 def select_other_devs(df: pd.DataFrame, f: Filters) -> pd.DataFrame:
-    """Groupe de comparaison : les autres développeurs de la même région."""
+    """Groupe de comparaison : les autres développeurs de la même région et de la même expérience."""
     out = apply_region(df, f.region)
-    return out[out["role_group"] == AUTRES]
+    out = out[out["role_group"] == AUTRES]
+    if f.exp_bands:
+        out = out[out["exp_band"].isin(f.exp_bands)]
+    return out
