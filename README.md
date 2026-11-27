@@ -30,9 +30,22 @@ Les données ne sont jamais commitées : elles sont téléchargées dans `data/r
 
 ```text
 src/so_ece/
-  paths.py      chemins du projet
-  download.py   téléchargement vérifié par SHA-256
-  load.py       lecture des colonnes utiles des deux sondages
+  paths.py        chemins du projet
+  download.py     téléchargement vérifié par SHA-256
+  load.py         lecture des colonnes utiles des deux sondages
+  harmonise.py    passe les données 2025 dans le vocabulaire 2026
+  analysis/
+    multi.py      calcul des parts pour les questions à choix multiples
+data/
+  harmonisation.csv   correspondances entre 2025 et 2026
 scripts/
-  download.py   lance le téléchargement
+  download.py     lance le téléchargement
 ```
+
+## Harmonisation 2025 / 2026
+
+Les deux sondages n'ont pas toujours les mêmes noms de colonnes ni les mêmes réponses. Par exemple, `LanguageHaveWorkedWith` en 2025 s'appelle `LanguagesHaveWorkedWith` en 2026, et `Docker` est devenu `Docker / Docker Compose`.
+
+Toutes ces correspondances sont dans `data/harmonisation.csv`, pas dans le code. Quand une question a changé entre les deux années (Docker, IA sur les tâches complexes), l'app affiche un avertissement.
+
+Pour les parts, les réponses sont découpées sur « ; » puis comparées mot pour mot. Sinon « MicroPython » serait compté comme « Python ».
