@@ -1,0 +1,22 @@
+kind,year,column,source,target,note
+column,2025,LanguageHaveWorkedWith,,LanguagesHaveWorkedWith,
+column,2025,LanguageWantToWorkWith,,LanguagesWantToWorkWith,
+column,2025,DatabaseHaveWorkedWith,,DatabasesHaveWorkedWith,
+column,2025,DatabaseWantToWorkWith,,DatabasesWantToWorkWith,
+column,2025,PlatformHaveWorkedWith,,CloudPlatHaveWorkedWith,Liste de choix modifiée en 2026 : uv et Conda n'existent qu'en 2026
+column,2025,PlatformWantToWorkWith,,CloudPlatWantToWorkWith,
+column,2025,DevEnvsHaveWorkedWith,,DevIDEHaveWorkedWith,
+column,2025,DevEnvsWantToWorkWith,,DevIDEWantToWorkWith,
+column,2025,AIAgentOrchestration,,AIOrchHaveWorkedWith,Listes différentes : ne comparer que les outils présents les deux années
+column,2025,AISent,,AISentiment,
+column,2025,DevType,,Role,Mêmes intitulés de rôles les deux années
+value,2025,CloudPlatHaveWorkedWith,Docker,Docker / Docker Compose,warning:Libellé et liste de choix modifiés entre 2025 et 2026 : la baisse apparente n'est pas un recul de Docker
+value,2025,CloudPlatWantToWorkWith,Docker,Docker / Docker Compose,warning:Libellé et liste de choix modifiés entre 2025 et 2026
+value,2025,CloudPlatHaveWorkedWith,Pip,pip,
+value,2025,CloudPlatWantToWorkWith,Pip,pip,
+value,2025,AISentiment,Favorable,Somewhat favorable,
+value,2025,AISentiment,Indifferent,Neutral,
+value,2025,AISentiment,Unfavorable,Somewhat unfavorable,
+value,2025,AISentiment,Unsure,Not sure,
+value,2025,AIOrchHaveWorkedWith,AutoGen (Microsoft),AutoGen,
+question,2026,AIComplex,,,"warning:En 2026, question élargie aux agents IA et posée aux seuls utilisateurs d'IA : comparaison limitée aux utilisateurs d'IA des deux années"
