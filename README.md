@@ -49,3 +49,20 @@ Les deux sondages n'ont pas toujours les mêmes noms de colonnes ni les mêmes r
 Toutes ces correspondances sont dans `data/harmonisation.csv`, pas dans le code. Quand une question a changé entre les deux années (Docker, IA sur les tâches complexes), l'app affiche un avertissement.
 
 Pour les parts, les réponses sont découpées sur « ; » puis comparées mot pour mot. Sinon « MicroPython » serait compté comme « Python ».
+
+## Population
+
+- Les région par défaut : l'Europe (UE à 27, Royaume-Uni, Suisse, Norvège,
+Islande), listée dans `data/europe.csv`.
+- Profils data/IA : les rôles de `data/roles.csv`, en 6 groupes (les DBA avec
+les data engineers, trop peu nombreux seuls).
+- Expérience professionnelle en trois tranches : 0-5 ans, 6-10 ans, plus de
+10 ans.
+- Moins de 30 répondants : chiffre masqué ; entre 30 et 100 : affiché avec un
+avertissement (`src/so_ece/labels.py`).
+- Les répondants sont des volontaires : aucune part n'est présentée comme
+celle de tous les développeurs.
+`load_year(2026)` (`src/so_ece/dataset.py`) lit, harmonise et ajoute ces
+colonnes en une fois.
+
+
