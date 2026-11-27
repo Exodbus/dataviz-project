@@ -1,8 +1,9 @@
-"""Télécharge les fichiers du Stack Overflow Developer Survey 2025 et 2026 dans data/raw/.
+"""Télécharge les données du sondage Stack Overflow (2025 et 2026) dans data/raw/.
 
-Chaque fichier est vérifié par son empreinte SHA-256 : si l'archive officielle change,
-le script s'arrête au lieu de produire des chiffres différents de ceux de la note de cadrage.
-La logique vit dans src/so_ece/download.py, partagée avec l'app (téléchargement automatique).
+On vérifie le SHA-256 de chaque fichier. Si Stack Overflow modifie l'archive, le script
+s'arrête : sinon on obtiendrait d'autres chiffres que ceux de la note de cadrage.
+Le code est dans src/so_ece/download.py (l'app s'en sert aussi pour télécharger
+les données au premier lancement).
 
 Usage : uv run python scripts/download.py
 """
