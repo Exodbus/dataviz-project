@@ -65,4 +65,21 @@ celle de tous les développeurs.
 `load_year(2026)` (`src/so_ece/dataset.py`) lit, harmonise et ajoute ces
 colonnes en une fois.
 
+## Comparaisons, indicateurs IA et tests
+
+Les calculs communs à l'accueil et aux axes sont dans `src/so_ece/analysis/`, sans Streamlit :
+
+- `compare.py` : écart entre deux parts (2025 → 2026, ou profils data/IA face aux autres développeurs), avec son intervalle à 95 %.
+- `ai.py` : part qui utilise l'IA, et part qui la juge bonne sur les tâches complexes (limitée aux utilisateurs d'IA les deux années, car la question 2026 ne leur est posée qu'à eux).
+- `home.py` : tableau de l'accueil. Chaque évolution est comparée à celle des autres développeurs (groupe de contrôle) : une hausse n'est dite « propre aux profils data/IA » que si l'écart net est lui-même significatif.
+- `src/so_ece/catalog.py` : les technologies suivies sur l'accueil (Docker exclu, son libellé a changé).
+
+Un écart est significatif s'il dépasse son intervalle à 95 %. Sinon, il est affiché comme « dans la marge d'incertitude ».
+
+Les tests se lancent avec `uv run pytest`, et `uv run python scripts/figures_note.py` recalcule les chiffres clés de la note de cadrage.
+
+## Notebooks
+
+`notebooks/00_prise_en_main.ipynb` montre comment charger une population et calculer une part, une évolution et le groupe de contrôle avec les fonctions du socle. Chaque membre y ajoute le notebook de son axe ; les règles sont dans `notebooks/README.md`.
+
 
