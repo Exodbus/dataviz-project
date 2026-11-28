@@ -83,3 +83,19 @@ Les tests se lancent avec `uv run pytest`, et `uv run python scripts/figures_not
 `notebooks/00_prise_en_main.ipynb` montre comment charger une population et calculer une part, une évolution et le groupe de contrôle avec les fonctions du socle. Chaque membre y ajoute le notebook de son axe ; les règles sont dans `notebooks/README.md`.
 
 
+
+## Lancer l'app
+
+```
+uv run streamlit run app/streamlit_app.py   # http://localhost:8501
+```
+
+Si les données n'ont pas été téléchargées, l'app le fait elle-même au premier lancement. L'interface est dans `app/` et ne fait aucun calcul : les calculs restent dans `src/so_ece/`. L'architecture (flux des données, cache, session) est décrite dans `docs/architecture.md`.
+
+| Filtre | Valeurs | Par défaut |
+| --- | --- | --- |
+| Région | Europe ou Monde | Europe |
+| Rôles data/IA | les 6 groupes de `data/roles.csv` | tous |
+| Expérience | 0-5 ans, 6-10 ans, plus de 10 ans | toutes |
+| Période | 2026, 2025, ou comparaison 2025 → 2026 | comparaison |
+| Autres développeurs | groupe de contrôle (même région, même expérience) | activé |
